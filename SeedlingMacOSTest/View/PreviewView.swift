@@ -1,3 +1,11 @@
+//
+//  PreviewView.swift
+//  SeedlingMacOSTest
+//
+//  Created by Vincenzo Gerelli on 16/10/25.
+//
+
+
 import SwiftUI
 
 /// Displays a read-only version of the form,
@@ -34,4 +42,8 @@ struct PreviewView: View {
             .padding(30)
         }
     }
+}
+
+#Preview {
+    PreviewView(form: FormViewModel().form)
 }

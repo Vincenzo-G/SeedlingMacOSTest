@@ -1,3 +1,11 @@
+//
+//  QuestionPreviewView.swift
+//  SeedlingMacOSTest
+//
+//  Created by Vincenzo Gerelli on 16/10/25.
+//
+
+
 import SwiftUI
 
 /// Displays an individual question in preview mode.
@@ -44,4 +52,8 @@ struct QuestionPreviewView: View {
         .cornerRadius(8)
         .shadow(radius: 2)
     }
+}
+
+#Preview {
+    QuestionPreviewView(question: FormViewModel().form.questions.first!)
 }

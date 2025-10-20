@@ -1,3 +1,11 @@
+//
+//  EditView.swift
+//  SeedlingMacOSTest
+//
+//  Created by Vincenzo Gerelli on 16/10/25.
+//
+
+
 import SwiftUI
 
 /// Displays the form editing interface.
@@ -29,4 +37,8 @@ struct EditView: View {
         }
         .listStyle(.sidebar)
     }
+}
+
+#Preview {
+    EditView(viewModel: FormViewModel())
 }

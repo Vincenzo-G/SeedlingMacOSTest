@@ -1,3 +1,11 @@
+//
+//  QuestionEditView.swift
+//  SeedlingMacOSTest
+//
+//  Created by Vincenzo Gerelli on 16/10/25.
+//
+
+
 import SwiftUI
 
 /// Allows the user to edit a single question.
@@ -50,4 +58,8 @@ struct QuestionEditView: View {
             }
         }
     }
+}
+
+#Preview {
+    QuestionEditView(question: .constant(FormViewModel().form.questions.first!), deleteAction: {})
 }

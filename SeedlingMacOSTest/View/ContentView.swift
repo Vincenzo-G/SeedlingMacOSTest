@@ -49,12 +49,6 @@ struct ContentView: View {
                         Label("Add Question", systemImage: "plus")
                     }
 
-                    // Button to export the current form as JSON
-                    Button("Export JSON") {
-                        if let json = viewModel.exportJSON() {
-                            print(json)
-                        }
-                    }
                 }
             }
         }
