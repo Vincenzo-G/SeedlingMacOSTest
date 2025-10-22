@@ -31,10 +31,10 @@ import SwiftUI
         switch type {
         case .multipleChoice:
             newQuestion = Question(type: .multipleChoice)
-        case .shortAnswer:
-            newQuestion = Question(text: "New Question", type: .shortAnswer, options: [])
-        case .paragraph:
-            newQuestion = Question(text: "New Question", type: .paragraph, options: [])
+        case .oddOneOut:
+            newQuestion = Question(text: "New Question", type: .oddOneOut, options: [])
+        case .numeric:
+            newQuestion = Question(text: "New Question", type: .numeric, options: [])
         }
         form.questions.append(newQuestion)
     }
@@ -49,10 +49,5 @@ import SwiftUI
         form.questions.move(fromOffsets: source, toOffset: destination)
     }
 
-    /// Exports the current form to a JSON string
-    func exportJSON() -> String? {
-        guard let data = try? JSONEncoder().encode(form),
-              let json = String(data: data, encoding: .utf8) else { return nil }
-        return json
-    }
+    
 }

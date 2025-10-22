@@ -39,22 +39,17 @@ struct ContentView: View {
                         Button("Add Multiple Choice") {
                             viewModel.addQuestion(ofType: .multipleChoice)
                         }
-                        Button("Add Short Answer") {
-                            viewModel.addQuestion(ofType: .shortAnswer)
+                        Button("Add Odd one out") {
+                            viewModel.addQuestion(ofType: .oddOneOut)
                         }
-                        Button("Add Paragraph") {
-                            viewModel.addQuestion(ofType: .paragraph)
+                        Button("Add Numeric") {
+                            viewModel.addQuestion(ofType: .numeric)
                         }
                     } label: {
                         Label("Add Question", systemImage: "plus")
                     }
 
-                    // Button to export the current form as JSON
-                    Button("Export JSON") {
-                        if let json = viewModel.exportJSON() {
-                            print(json)
-                        }
-                    }
+                    
                 }
             }
         }
