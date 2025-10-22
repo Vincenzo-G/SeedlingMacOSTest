@@ -10,7 +10,7 @@ struct QuestionEditView: View {
     private let gridColumns = [GridItem(.adaptive(minimum: 160), spacing: 20)]
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 16) { // Inizio del VStack
             
             // MARK: - Question Text & Picker
             HStack {
@@ -32,28 +32,41 @@ struct QuestionEditView: View {
                 }
                 .buttonStyle(.borderless)
             }
+            
+            // MARK: - Multiple Choice Section
             if question.type == .multipleChoice {
-                            ForEach($question.options) { $option in
-                                HStack {
-                                    Image(systemName: "circle")
-                                    TextField("Option text", text: $option.text)
-                                    Button {
-                                        question.options.removeAll { $0.id == option.id }
-                                    } label: {
-                                        Image(systemName: "xmark.circle.fill")
-                                    }
-                                    .foregroundColor(.gray)
-                                    .buttonStyle(.borderless)
-                                }
-                            }
-
-                            // Button to add new options
-                            Button("Add Option") {
-                                question.options.append(Option(text: "New Option"))
-                            }
-                            .padding(.leading, 20)
+                ForEach($question.options) { $option in
+                    HStack {
+                        // Toggle to select the correct option
+                        Toggle(isOn: $option.isCorrect) {
+                            Image(systemName: option.isCorrect ? "checkmark.circle.fill" : "circle")
                         }
-            // MARK: - Odd One Out Section
+                        .toggleStyle(.button)
+                        .help("Set as correct answer")
+                        
+                        //Textfield for the option
+                        TextField("Option text", text: $option.text)
+                            .textFieldStyle(.roundedBorder)
+                        
+                        // Button to delete the option
+                        Button {
+                            question.options.removeAll { $0.id == option.id }
+                        } label: {
+                            Image(systemName: "xmark.circle.fill")
+                        }
+                        .foregroundColor(.gray)
+                        .buttonStyle(.borderless)
+                    }
+                }
+                
+                // Button to add new options
+                Button("Add Option") {
+                    question.options.append(Option(text: "New Option"))
+                }
+                .padding(.leading, 20)
+            }
+            
+            // MARK: - Odd One Out Section (ORA ALL'INTERNO DEL VSTACK)
             if question.type == .oddOneOut {
                 Text("Add images:")
                     .font(.headline)
@@ -118,10 +131,10 @@ struct QuestionEditView: View {
                     .padding(.vertical, 10)
                 }
                 .frame(minHeight: 200)
-            }
-        }
+            } // Fine del blocco Odd One Out
+        } // Fine del VStack
         .padding(.vertical, 12)
-    }
+    } // Fine di var body
     
     // MARK: - Image Handling
     private func openImagePicker() {

@@ -21,7 +21,7 @@ struct Question: Identifiable, Hashable, Codable {
     var id = UUID()
     var text: String = "New Question"
     var type: QuestionType = .multipleChoice
-    var options: [Option] = [Option(text: "Option 1")]
+    var options: [Option] = [Option(text: "Option 1", isCorrect: true)]
     var images: [Data]? = nil // 🆕 For Odd One Out image storage
     
     // For odd one out: restrict number of images
